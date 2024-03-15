@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 class="mt-5">{{ title }}</h1>
+  
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <!-- Selector de moneda de origen -->
+      <div class="form-group">
+        <label for="fromCurrency">Moneda de origen:</label>
+        <select id="fromCurrency" class="form-control" [(ngModel)]="fromCurrency">
+          <option *ngFor="let currency of getCurrencies()" [value]="currency">{{ currency }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Selector de moneda de destino -->
+      <div class="form-group">
+        <label for="toCurrency">Moneda de destino:</label>
+        <select id="toCurrency" class="form-control" [(ngModel)]="toCurrency">
+          <option *ngFor="let currency of getCurrencies()" [value]="currency">{{ currency }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Input para la cantidad -->
+      <div class="form-group">
+        <label for="amount">Cantidad:</label>
+        <input type="number" id="amount" class="form-control" [(ngModel)]="amount" min="1">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Botón para realizar la conversión -->
+      <button class="btn btn-primary" (click)="convert()">Convertir</button>
+    </div>
+  </div>
+
+  <!-- Resultado de la conversión -->
+  <div class="row mt-4" *ngIf="conversionResult">
+    <div class="col-md-6">
+      <div class="alert alert-success" role="alert">
+        {{ amount }} {{ fromCurrency }} equivale a {{ conversionResult[toCurrency] * amount }} {{ toCurrency }}
+      </div>
+    </div>
+  </div>
+</div>
