@@ -7,7 +7,7 @@ import { CurrencyService } from './currency.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'MonedaDeCambioApp';
+  title = 'Moneda De CambioApp';
   amount: number = 1; // Cantidad predeterminada
   fromCurrency: string = 'USD';
   toCurrency: string = 'EUR';
